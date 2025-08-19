@@ -77,7 +77,7 @@ const carouselImages = [
     "Capture3.PNG",
     "Capture4.PNG",
     "Capture5.PNG",
-    "https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    "Captur6.PNG"
 ];
 
 // Initialize the application
