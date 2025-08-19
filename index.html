@@ -3,327 +3,744 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analyst Portfolio</title>
+    <meta name="description" content="Michael Afolayan - Professional Data Analyst Portfolio showcasing expertise in Excel, SQL, Power BI, Tableau, Python, and Automation">
+    <meta name="keywords" content="data analyst, excel, sql, power bi, tableau, python, automation, data visualization, business intelligence">
+    <meta name="author" content="Michael Afolayan">
+    <title>Michael Afolayan - Data Analyst Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
+    <!-- Header -->
     <header id="header" class="header">
-        <div class="nav-container">
+        <nav class="nav-container">
             <div class="nav-content">
-                <a href="#" class="logo">Data Analyst</a>
-                <nav class="nav-desktop">
+                <div class="logo">Michael Afolayan</div>
+                
+                <!-- Desktop Navigation -->
+                <div class="nav-desktop">
                     <a href="#home" class="nav-link">Home</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <div class="dropdown">
-                        <button class="dropdown-btn">
-                            More Projects
-                            <i class="dropdown-icon" data-lucide="chevron-down"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <button class="dropdown-item" onclick="filterProjects('All')">All</button>
-                            <button class="dropdown-item" onclick="filterProjects('Power BI')">Power BI</button>
-                            <button class="dropdown-item" onclick="filterProjects('Python')">Python</button>
-                            <button class="dropdown-item" onclick="filterProjects('Excel')">Excel</button>
-                            <button class="dropdown-item" onclick="filterProjects('SQL')">SQL</button>
-                            <button class="dropdown-item" onclick="filterProjects('Tableau')">Tableau</button>
-                            <button class="dropdown-item" onclick="filterProjects('MS Project')">MS Project</button>
-                            <button class="dropdown-item" onclick="filterProjects('Automation')">Automation</button>
-                        </div>
-                    </div>
                     <a href="#topics" class="nav-link">Topics</a>
                     <a href="#about" class="nav-link">About</a>
                     <a href="#background" class="nav-link">Background</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    
+                    <!-- Projects Dropdown -->
+                    <div class="dropdown">
+                        <button class="dropdown-btn">
+                            Projects
+                            <i data-lucide="chevron-down" class="dropdown-icon"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <button onclick="filterProjects('All')" class="dropdown-item">All Projects</button>
+                            <button onclick="filterProjects('Excel')" class="dropdown-item">Excel Projects</button>
+                            <button onclick="filterProjects('SQL')" class="dropdown-item">SQL Projects</button>
+                            <button onclick="filterProjects('Power BI')" class="dropdown-item">Power BI Projects</button>
+                            <button onclick="filterProjects('Tableau')" class="dropdown-item">Tableau Projects</button>
+                            <button onclick="filterProjects('MS Project')" class="dropdown-item">MS Project</button>
+                            <button onclick="filterProjects('Python')" class="dropdown-item">Python Projects</button>
+                            <button onclick="filterProjects('Automation')" class="dropdown-item">Automation Projects</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Dark Mode Toggle -->
                     <button id="darkModeToggle" class="dark-mode-toggle">
-                        <i class="dark-mode-icon" data-lucide="moon"></i>
+                        <i data-lucide="moon" class="dark-mode-icon"></i>
                     </button>
-                </nav>
-                <button id="mobileMenuBtn" class="mobile-menu-btn">
-                    <i class="mobile-menu-icon" data-lucide="menu"></i>
-                </button>
-            </div>
-        </div>
-        <div id="mobileMenu" class="mobile-menu">
-            <div class="mobile-menu-content">
-                <a href="#home" class="mobile-nav-link">Home</a>
-                <a href="#projects" class="mobile-nav-link">Projects</a>
-                <div class="mobile-projects-section">
-                    <div class="mobile-section-title">More Projects</div>
-                    <button class="mobile-project-link" onclick="filterProjects('All')">All</button>
-                    <button class="mobile-project-link" onclick="filterProjects('Power BI')">Power BI</button>
-                    <button class="mobile-project-link" onclick="filterProjects('Python')">Python</button>
-                    <button class="mobile-project-link" onclick="filterProjects('Excel')">Excel</button>
-                    <button class="mobile-project-link" onclick="filterProjects('SQL')">SQL</button>
-                    <button class="mobile-project-link" onclick="filterProjects('Tableau')">Tableau</button>
-                    <button class="mobile-project-link" onclick="filterProjects('MS Project')">MS Project</button>
-                    <button class="mobile-project-link" onclick="filterProjects('Automation')">Automation</button>
                 </div>
-                <a href="#topics" class="mobile-nav-link">Topics</a>
-                <a href="#about" class="mobile-nav-link">About</a>
-                <a href="#background" class="mobile-nav-link">Background</a>
-                <button id="mobileDarkModeToggle" class="mobile-dark-mode-toggle">
-                    <i class="mobile-dark-mode-icon" data-lucide="moon"></i>
-                    <span class="mobile-dark-mode-text">Dark Mode</span>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="mobile-menu-btn">
+                    <i data-lucide="menu" class="mobile-menu-icon"></i>
                 </button>
             </div>
-        </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="mobile-menu">
+                <div class="mobile-menu-content">
+                    <a href="#home" class="mobile-nav-link">Home</a>
+                    <a href="#topics" class="mobile-nav-link">Topics</a>
+                    <a href="#about" class="mobile-nav-link">About</a>
+                    <a href="#background" class="mobile-nav-link">Background</a>
+                    <a href="#skills" class="mobile-nav-link">Skills</a>
+                    <a href="#contact" class="mobile-nav-link">Contact</a>
+                    
+                    <div class="mobile-projects-section">
+                        <div class="mobile-section-title">Projects</div>
+                        <button onclick="filterProjects('All')" class="mobile-project-link">All Projects</button>
+                        <button onclick="filterProjects('Excel')" class="mobile-project-link">Excel Projects</button>
+                        <button onclick="filterProjects('SQL')" class="mobile-project-link">SQL Projects</button>
+                        <button onclick="filterProjects('Power BI')" class="mobile-project-link">Power BI Projects</button>
+                        <button onclick="filterProjects('Tableau')" class="mobile-project-link">Tableau Projects</button>
+                        <button onclick="filterProjects('MS Project')" class="mobile-project-link">MS Project</button>
+                        <button onclick="filterProjects('Python')" class="mobile-project-link">Python Projects</button>
+                        <button onclick="filterProjects('Automation')" class="mobile-project-link">Automation Projects</button>
+                    </div>
+                    
+                    <button id="mobileDarkModeToggle" class="mobile-dark-mode-toggle">
+                        <i data-lucide="moon" class="mobile-dark-mode-icon"></i>
+                        <span class="mobile-dark-mode-text">Dark Mode</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-bg">
-                <div class="hero-blob hero-blob-1"></div>
-                <div class="hero-blob hero-blob-2"></div>
-                <div class="hero-blob hero-blob-3"></div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="hero-blob hero-blob-1"></div>
+            <div class="hero-blob hero-blob-2"></div>
+            <div class="hero-blob hero-blob-3"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-name">
+                    <h2>MICHAEL AFOLAYAN</h2>
+                    <div class="hero-line"></div>
+                </div>
+                
+                <h1 class="hero-title">
+                    Data Analyst
+                    <span class="hero-subtitle">& Automation Enthusiast</span>
+                </h1>
+                
+                <p class="hero-description">
+                    Transforming raw data into actionable insights through advanced analytics, 
+                    visualization, and automation. Specializing in Excel, Power BI, SQL, Python, Tableau, and Microsoft Project.
+                </p>
+
+                <div class="hero-buttons">
+                    <button onclick="scrollToSection('#projects')" class="btn-primary">
+                        View My Work
+                    </button>
+                    <button class="btn-secondary">
+                        <i data-lucide="AFOLAYAN MICHAEL.pdf"></i>
+                        Download Resume
+                    </button>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Technologies</div>
+                    </div>
+                </div>
             </div>
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="hero-name">
-                        <h2>Hi, I'm [Your Name]</h2>
-                        <div class="hero-line"></div>
-                    </div>
-                    <h1 class="hero-title">
-                        Data Analyst <br>
-                        <span class="hero-subtitle">Turning Data into Insights</span>
-                    </h1>
-                    <p class="hero-description">
-                        I specialize in transforming complex datasets into actionable insights using tools like Power BI, Python, SQL, and Excel. Explore my projects to see how I drive data-driven decisions.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn-primary">View Projects</a>
-                        <a href="#contact" class="btn-secondary">
-                            <i data-lucide="mail"></i>
-                            Contact Me
-                        </a>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <div class="stat-number">10+</div>
-                            <div class="stat-label">Projects Completed</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">5+</div>
-                            <div class="stat-label">Years Experience</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">7</div>
-                            <div class="stat-label">Tools Mastered</div>
+        </div>
+
+        <button onclick="scrollToSection('#projects')" class="scroll-indicator">
+            <i data-lucide="chevron-down"></i>
+        </button>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <div class="section-line"></div>
+                <p>Explore my portfolio of data analysis projects showcasing expertise across various technologies and business domains.</p>
+            </div>
+
+            <!-- Image Carousel -->
+            <div class="carousel-section">
+                <div class="carousel-header">
+                    <h3>
+                        <i data-lucide="image"></i>
+                        Project Gallery
+                    </h3>
+                    <p>Visual showcase of my data analytics work</p>
+                </div>
+                
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <img id="carouselImage" src="https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Data Analytics Dashboard - Call Centre Performance">
+                        
+                        <button id="prevBtn" class="carousel-btn carousel-prev">
+                            <i data-lucide="chevron-left"></i>
+                        </button>
+                        <button id="nextBtn" class="carousel-btn carousel-next">
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+                        
+                        <div class="carousel-indicators">
+                            <button class="indicator active" onclick="goToSlide(0)" aria-label="Call Centre Dashboard"></button>
+                            <button class="indicator" onclick="goToSlide(1)" aria-label="Sales Performance Dashboard"></button>
+                            <button class="indicator" onclick="goToSlide(2)" aria-label="Customer Analytics Dashboard"></button>
+                            <button class="indicator" onclick="goToSlide(3)" aria-label="Financial Analysis Dashboard"></button>
+                            <button class="indicator" onclick="goToSlide(4)" aria-label="Marketing Dashboard"></button>
+                            <button class="indicator" onclick="goToSlide(5)" aria-label="Operations Dashboard"></button>
                         </div>
                     </div>
                 </div>
-                <button class="scroll-indicator" onclick="scrollToSection('#projects')">
-                    <i data-lucide="chevron-down"></i>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="All" onclick="setActiveFilter(this, 'All')">
+                    <i data-lucide="bar-chart-3"></i>
+                    All
+                </button>
+                <button class="filter-btn" data-category="Excel" onclick="setActiveFilter(this, 'Excel')">
+                    <i data-lucide="file-spreadsheet"></i>
+                    Excel
+                </button>
+                <button class="filter-btn" data-category="SQL" onclick="setActiveFilter(this, 'SQL')">
+                    <i data-lucide="database"></i>
+                    SQL
+                </button>
+                <button class="filter-btn" data-category="Power BI" onclick="setActiveFilter(this, 'Power BI')">
+                    <i data-lucide="bar-chart-3"></i>
+                    Power BI
+                </button>
+                <button class="filter-btn" data-category="Tableau" onclick="setActiveFilter(this, 'Tableau')">
+                    <i data-lucide="bar-chart-3"></i>
+                    Tableau
+                </button>
+                <button class="filter-btn" data-category="MS Project" onclick="setActiveFilter(this, 'MS Project')">
+                    <i data-lucide="bar-chart-3"></i>
+                    MS Project
+                </button>
+                <button class="filter-btn" data-category="Python" onclick="setActiveFilter(this, 'Python')">
+                    <i data-lucide="code"></i>
+                    Python
+                </button>
+                <button class="filter-btn" data-category="Automation" onclick="setActiveFilter(this, 'Automation')">
+                    <i data-lucide="zap"></i>
+                    Automation
                 </button>
             </div>
-        </section>
 
-        <section id="projects" class="projects">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Projects</h2>
-                    <div class="section-line"></div>
-                    <p>Explore my portfolio of data analytics projects showcasing expertise in various tools and techniques.</p>
-                </div>
-                <div class="carousel-section">
-                    <div class="carousel-header">
-                        <h3>
-                            <i data-lucide="monitor"></i>
-                            Project Dashboards
-                        </h3>
-                        <p>Interactive visualizations and dashboards built to uncover insights.</p>
+            <!-- Projects Grid -->
+            <div id="projectsGrid" class="projects-grid">
+                <!-- Projects will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Topics Section -->
+    <section id="topics" class="topics">
+        <div class="container">
+            <div class="section-header">
+                <h2>Key Topics in Data Analytics</h2>
+                <div class="section-line"></div>
+                <p>Exploring the fundamental concepts and advanced techniques that drive modern data analytics and automation solutions.</p>
+            </div>
+
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <div class="topic-icon topic-icon-blue">
+                        <i data-lucide="trending-up"></i>
                     </div>
-                    <div class="carousel-container">
-                        <div class="carousel">
-                            <img id="carouselImage" src="" alt="Project Dashboard">
-                            <div class="carousel-indicators">
-                                <button class="indicator" onclick="goToSlide(0)"></button>
-                                <button class="indicator" onclick="goToSlide(1)"></button>
-                                <button class="indicator" onclick="goToSlide(2)"></button>
-                                <button class="indicator" onclick="goToSlide(3)"></button>
-                                <button class="indicator" onclick="goToSlide(4)"></button>
-                                <button class="indicator" onclick="goToSlide(5)"></button>
+                    <h3>Predictive Analytics</h3>
+                    <p>Leveraging historical data to forecast future trends, identify patterns, and make data-driven predictions that drive strategic business decisions.</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon topic-icon-purple">
+                        <i data-lucide="database"></i>
+                    </div>
+                    <h3>Data Warehousing</h3>
+                    <p>Designing and implementing robust data warehouse solutions that centralize information from multiple sources for comprehensive analysis.</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon topic-icon-teal">
+                        <i data-lucide="bar-chart-3"></i>
+                    </div>
+                    <h3>Business Intelligence</h3>
+                    <p>Creating interactive dashboards and reports that transform complex data into clear, actionable insights for stakeholders at all levels.</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon topic-icon-orange">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <h3>Process Automation</h3>
+                    <p>Streamlining repetitive tasks and workflows through intelligent automation, reducing manual effort and increasing operational efficiency.</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon topic-icon-green">
+                        <i data-lucide="brain"></i>
+                    </div>
+                    <h3>Machine Learning</h3>
+                    <p>Implementing ML algorithms to uncover hidden patterns, automate decision-making, and create predictive models for business optimization.</p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon topic-icon-red">
+                        <i data-lucide="target"></i>
+                    </div>
+                    <h3>Performance Optimization</h3>
+                    <p>Analyzing key performance indicators and metrics to identify bottlenecks, optimize processes, and drive continuous improvement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-container">
+                        <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Michael Afolayan">
+                        <div class="image-badge">Data Analyst</div>
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <p>I'm Michael Afolayan, a passionate data analyst with over 5 years of experience turning complex datasets into clear, actionable insights. My expertise spans across multiple platforms and programming languages, allowing me to tackle any data challenge.</p>
+                    
+                    <p>From building sophisticated Excel models and Tableau visualizations to creating automated Python workflows, I help organizations make data-driven decisions that drive growth and efficiency. I believe that every dataset tells a story – my job is to help you understand that story.</p>
+
+                    <div class="skills-tags">
+                        <span class="skill-tag skill-tag-blue">Advanced Excel</span>
+                        <span class="skill-tag skill-tag-purple">SQL Expert</span>
+                        <span class="skill-tag skill-tag-teal">Python Developer</span>
+                        <span class="skill-tag skill-tag-orange">Power BI Specialist</span>
+                        <span class="skill-tag skill-tag-green">Tableau Expert</span>
+                        <span class="skill-tag skill-tag-red">MS Project</span>
+                        <span class="skill-tag skill-tag-indigo">Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-highlights">
+                <div class="highlight-card">
+                    <i data-lucide="trending-up"></i>
+                    <h3>Predictive Analytics</h3>
+                    <p>Building models that forecast trends and identify opportunities</p>
+                </div>
+                <div class="highlight-card">
+                    <i data-lucide="database"></i>
+                    <h3>Data Engineering</h3>
+                    <p>Designing efficient data pipelines and database solutions</p>
+                </div>
+                <div class="highlight-card">
+                    <i data-lucide="pie-chart"></i>
+                    <h3>Visualization</h3>
+                    <p>Creating compelling dashboards and interactive reports</p>
+                </div>
+                <div class="highlight-card">
+                    <i data-lucide="bot"></i>
+                    <h3>Automation</h3>
+                    <p>Streamlining workflows with intelligent automation solutions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Background Section -->
+    <section id="background" class="background">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Background</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- Professional Summary -->
+            <div class="professional-summary">
+                <h3>
+                    <i data-lucide="award"></i>
+                    Professional Summary
+                </h3>
+                <p>Results-driven Data Analyst with 5+ years of experience transforming complex datasets into strategic business insights. Proven expertise in statistical analysis, data visualization, and process automation across diverse industries. Skilled in leading cross-functional teams and delivering high-impact solutions that drive operational efficiency and revenue growth. Passionate about leveraging cutting-edge analytics tools to solve complex business challenges and enable data-driven decision making at all organizational levels.</p>
+            </div>
+
+            <div class="background-content">
+                <!-- Work Experience -->
+                <div class="experience-section">
+                    <h3>
+                        <i data-lucide="briefcase"></i>
+                        Work Experience
+                    </h3>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="job-header">
+                                    <h4>Senior Data Analyst</h4>
+                                    <span class="job-period">
+                                        <i data-lucide="calendar"></i>
+                                        2022 - Present
+                                    </span>
+                                </div>
+                                <p class="company">Tech Solutions Inc.</p>
+                                <p class="job-description">Lead data analytics initiatives, develop automated reporting systems, and provide strategic insights to C-level executives.</p>
+                                <div class="achievements">
+                                    <p><strong>Key Achievements:</strong></p>
+                                    <ul>
+                                        <li>Reduced reporting time by 75% through automation</li>
+                                        <li>Implemented predictive models increasing forecast accuracy by 30%</li>
+                                        <li>Led cross-functional team of 5 analysts</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="job-header">
+                                    <h4>Data Analyst</h4>
+                                    <span class="job-period">
+                                        <i data-lucide="calendar"></i>
+                                        2020 - 2022
+                                    </span>
+                                </div>
+                                <p class="company">Business Intelligence Corp</p>
+                                <p class="job-description">Developed comprehensive dashboards and performed statistical analysis to support business decision-making.</p>
+                                <div class="achievements">
+                                    <p><strong>Key Achievements:</strong></p>
+                                    <ul>
+                                        <li>Created 15+ interactive Power BI dashboards</li>
+                                        <li>Optimized SQL queries improving performance by 40%</li>
+                                        <li>Trained 20+ staff members on data visualization tools</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="job-header">
+                                    <h4>Junior Data Analyst</h4>
+                                    <span class="job-period">
+                                        <i data-lucide="calendar"></i>
+                                        2019 - 2020
+                                    </span>
+                                </div>
+                                <p class="company">Analytics Startup</p>
+                                <p class="job-description">Performed data cleaning, analysis, and visualization for various client projects across multiple industries.</p>
+                                <div class="achievements">
+                                    <p><strong>Key Achievements:</strong></p>
+                                    <ul>
+                                        <li>Processed and analyzed datasets with 1M+ records</li>
+                                        <li>Developed automated Excel models for financial forecasting</li>
+                                        <li>Contributed to 25+ successful client projects</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-category="All" onclick="setActiveFilter(this, 'All')">
-                        <i data-lucide="grid"></i>
-                        All
-                    </button>
-                    <button class="filter-btn" data-category="Power BI" onclick="setActiveFilter(this, 'Power BI')">
-                        <i data-lucide="bar-chart-3"></i>
-                        Power BI
-                    </button>
-                    <button class="filter-btn" data-category="Python" onclick="setActiveFilter(this, 'Python')">
-                        <i data-lucide="code"></i>
-                        Python
-                    </button>
-                    <button class="filter-btn" data-category="Excel" onclick="setActiveFilter(this, 'Excel')">
-                        <i data-lucide="file-spreadsheet"></i>
-                        Excel
-                    </button>
-                    <button class="filter-btn" data-category="SQL" onclick="setActiveFilter(this, 'SQL')">
-                        <i data-lucide="database"></i>
-                        SQL
-                    </button>
-                    <button class="filter-btn" data-category="Tableau" onclick="setActiveFilter(this, 'Tableau')">
-                        <i data-lucide="bar-chart-3"></i>
-                        Tableau
-                    </button>
-                    <button class="filter-btn" data-category="MS Project" onclick="setActiveFilter(this, 'MS Project')">
-                        <i data-lucide="bar-chart-3"></i>
-                        MS Project
-                    </button>
-                    <button class="filter-btn" data-category="Automation" onclick="setActiveFilter(this, 'Automation')">
-                        <i data-lucide="zap"></i>
-                        Automation
-                    </button>
-                </div>
-                <div id="projectsGrid" class="projects-grid"></div>
-            </div>
-        </section>
 
-        <section id="topics" class="topics">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Core Competencies</h2>
-                    <div class="section-line"></div>
-                    <p>Key areas of expertise in data analytics and visualization.</p>
+                <!-- Education & Certifications -->
+                <div class="education-section">
+                    <h3>
+                        <i data-lucide="graduation-cap"></i>
+                        Education
+                    </h3>
+                    
+                    <div class="education-list">
+                        <div class="education-item">
+                            <h4>Master of Science in Data Analytics</h4>
+                            <p class="institution">University of Technology</p>
+                            <p class="period">2017 - 2019</p>
+                            <p class="details">Specialized in Statistical Analysis, Machine Learning, and Business Intelligence</p>
+                        </div>
+
+                        <div class="education-item">
+                            <h4>Bachelor of Science in Mathematics</h4>
+                            <p class="institution">State University</p>
+                            <p class="period">2013 - 2017</p>
+                            <p class="details">Minor in Computer Science, Magna Cum Laude</p>
+                        </div>
+                    </div>
+
+                    <h3 class="certifications-title">Certifications</h3>
+                    <div class="certifications-grid">
+                        <div class="certification-item">
+                            <i data-lucide="award"></i>
+                            <span>Microsoft Certified: Power BI Data Analyst Associate</span>
+                        </div>
+                        <div class="certification-item">
+                            <i data-lucide="award"></i>
+                            <span>Tableau Desktop Specialist</span>
+                        </div>
+                        <div class="certification-item">
+                            <i data-lucide="award"></i>
+                            <span>Google Analytics Certified</span>
+                        </div>
+                        <div class="certification-item">
+                            <i data-lucide="award"></i>
+                            <span>Python for Data Science (Coursera)</span>
+                        </div>
+                        <div class="certification-item">
+                            <i data-lucide="award"></i>
+                            <span>Advanced Excel Certification</span>
+                        </div>
+                        <div class="certification-item">
+                            <i data-lucide="award"></i>
+                            <span>SQL Server Database Administration</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="topics-grid">
-                    <div class="topic-card">
-                        <div class="topic-icon topic-icon-blue">
-                            <i data-lucide="database"></i>
-                        </div>
-                        <h3>Data Analysis</h3>
-                        <p>Proficient in analyzing complex datasets to uncover trends, patterns, and insights using statistical methods and tools like Python and SQL.</p>
-                    </div>
-                    <div class="topic-card">
-                        <div class="topic-icon topic-icon-purple">
-                            <i data-lucide="bar-chart-3"></i>
-                        </div>
-                        <h3>Data Visualization</h3>
-                        <p>Expert in creating interactive dashboards and visualizations with Power BI and Tableau to communicate insights effectively.</p>
-                    </div>
-                    <div class="topic-card">
-                        <div class="topic-icon topic-icon-teal">
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Skills</h2>
+                <div class="section-line"></div>
+                <p>Proficient across multiple platforms and technologies, with expertise in data analysis, visualization, and automation.</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon skill-icon-green">
                             <i data-lucide="file-spreadsheet"></i>
                         </div>
-                        <h3>Excel Mastery</h3>
-                        <p>Advanced skills in Excel, including VBA, Power Query, and complex formulas for financial modeling and data processing.</p>
-                    </div>
-                    <div class="topic-card">
-                        <div class="topic-icon topic-icon-orange">
-                            <i data-lucide="zap"></i>
+                        <div class="skill-info">
+                            <h3>Microsoft Excel</h3>
+                            <span>95% Proficiency</span>
                         </div>
-                        <h3>Automation</h3>
-                        <p>Skilled in automating repetitive tasks and workflows using Power Automate and Python to improve efficiency.</p>
                     </div>
-                    <div class="topic-card">
-                        <div class="topic-icon topic-icon-green">
-                            <i data-lucide="code"></i>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 95%"></div>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">Advanced Formulas</div>
+                        <div class="skill-item">Pivot Tables</div>
+                        <div class="skill-item">VBA Macros</div>
+                        <div class="skill-item">Data Modeling</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon skill-icon-blue">
+                            <i data-lucide="database"></i>
                         </div>
-                        <h3>Programming</h3>
-                        <p>Proficient in Python for data manipulation, machine learning, and scripting, with experience in Pandas, NumPy, and Scikit-learn.</p>
+                        <div class="skill-info">
+                            <h3>SQL</h3>
+                            <span>92% Proficiency</span>
+                        </div>
                     </div>
-                    <div class="topic-card">
-                        <div class="topic-icon topic-icon-red">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 92%"></div>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">Complex Queries</div>
+                        <div class="skill-item">Stored Procedures</div>
+                        <div class="skill-item">Data Warehousing</div>
+                        <div class="skill-item">Performance Tuning</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon skill-icon-yellow">
                             <i data-lucide="bar-chart-3"></i>
                         </div>
-                        <h3>Project Management</h3>
-                        <p>Experienced in managing data projects using MS Project, ensuring timely delivery and resource optimization.</p>
+                        <div class="skill-info">
+                            <h3>Power BI</h3>
+                            <span>90% Proficiency</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%"></div>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">DAX Functions</div>
+                        <div class="skill-item">Custom Visuals</div>
+                        <div class="skill-item">Data Gateway</div>
+                        <div class="skill-item">Report Deployment</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon skill-icon-indigo">
+                            <i data-lucide="bar-chart-3"></i>
+                        </div>
+                        <div class="skill-info">
+                            <h3>Tableau</h3>
+                            <span>88% Proficiency</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 88%"></div>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">Advanced Visualizations</div>
+                        <div class="skill-item">Calculated Fields</div>
+                        <div class="skill-item">Dashboard Actions</div>
+                        <div class="skill-item">Data Blending</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon skill-icon-red">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <div class="skill-info">
+                            <h3>Microsoft Project</h3>
+                            <span>85% Proficiency</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">Project Planning</div>
+                        <div class="skill-item">Resource Management</div>
+                        <div class="skill-item">Gantt Charts</div>
+                        <div class="skill-item">Timeline Analysis</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon skill-icon-purple">
+                            <i data-lucide="code"></i>
+                        </div>
+                        <div class="skill-info">
+                            <h3>Python</h3>
+                            <span>88% Proficiency</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 88%"></div>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">Pandas</div>
+                        <div class="skill-item">NumPy</div>
+                        <div class="skill-item">Matplotlib</div>
+                        <div class="skill-item">Scikit-learn</div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon skill-icon-orange">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <div class="skill-info">
+                            <h3>Automation</h3>
+                            <span>85% Proficiency</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">Power Automate</div>
+                        <div class="skill-item">Python Scripts</div>
+                        <div class="skill-item">Excel VBA</div>
+                        <div class="skill-item">API Integration</div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="about" class="about">
-            <div class="container">
-                <div class="section-header">
-                    <h2>About Me</h2>
-                    <div class="section-line"></div>
-                    <p>Learn more about my journey and passion for data analytics.</p>
-                </div>
-                <div class="about-content">
-                    <div class="about-image">
-                        <div class="image-container">
-                            <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Profile Picture">
-                            <span class="image-badge">Data Enthusiast</span>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Let's Work Together</h2>
+                <div class="section-line"></div>
+                <p>Ready to turn your data into actionable insights? Let's discuss how I can help your organization make better data-driven decisions.</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>I'm always interested in new opportunities and challenging projects. Whether you need help with data analysis, dashboard development, or automation solutions, I'd love to hear from you.</p>
+                    
+                    <div class="contact-methods">
+                        <a href="mailto:michael.afolayan@example.com" class="contact-method" aria-label="Send email">
+                            <div class="contact-icon contact-icon-red">
+                                <i data-lucide="mail"></i>
+                            </div>
+                        </a>
+                        <a href="https://linkedin.com/in/michael-afolayan" class="contact-method" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+                            <div class="contact-icon contact-icon-blue">
+                                <i data-lucide="linkedin"></i>
+                            </div>
+                        </a>
+                        <a href="https://github.com/michael-afolayan" class="contact-method" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                            <div class="contact-icon contact-icon-gray">
+                                <i data-lucide="github"></i>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i data-lucide="phone"></i>
+                            <span>+1 (555) 123-4567</span>
                         </div>
-                    </div>
-                    <div class="about-text">
-                        <p>I'm a dedicated Data Analyst with a passion for transforming raw data into meaningful insights that drive business decisions. With over 5 years of experience, I specialize in leveraging tools like Power BI, Python, SQL, and Excel to solve complex problems.</p>
-                        <p>My approach combines technical expertise with a keen eye for detail, ensuring accurate and actionable results. I thrive on challenges and am committed to continuous learning to stay at the forefront of data analytics trends.</p>
-                        <div class="skills-tags">
-                            <span class="skill-tag skill-tag-blue">Data Analysis</span>
-                            <span class="skill-tag skill-tag-purple">Data Visualization</span>
-                            <span class="skill-tag skill-tag-teal">SQL</span>
-                            <span class="skill-tag skill-tag-orange">Python</span>
-                            <span class="skill-tag skill-tag-green">Excel</span>
-                            <span class="skill-tag skill-tag-red">Power BI</span>
-                            <span class="skill-tag skill-tag-indigo">Tableau</span>
+                        <div class="contact-detail">
+                            <i data-lucide="map-pin"></i>
+                            <span>Available for remote work worldwide</span>
                         </div>
-                    </div>
-                </div>
-                <div class="about-highlights">
-                    <div class="highlight-card">
-                        <i data-lucide="award"></i>
-                        <h3>Certified Analyst</h3>
-                        <p>Microsoft Certified: Data Analyst Associate and other industry-recognized certifications.</p>
-                    </div>
-                    <div class="highlight-card">
-                        <i data-lucide="briefcase"></i>
-                        <h3>Industry Experience</h3>
-                        <p>Worked with clients in finance, retail, and tech to deliver data-driven solutions.</p>
-                    </div>
-                    <div class="highlight-card">
-                        <i data-lucide="code"></i>
-                        <h3>Technical Skills</h3>
-                        <p>Proficient in multiple programming languages and data tools for comprehensive analysis.</p>
-                    </div>
-                    <div class="highlight-card">
-                        <i data-lucide="users"></i>
-                        <h3>Collaborative</h3>
-                        <p>Experienced in cross-functional teamwork to align data insights with business goals.</p>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section id="background" class="background">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Background</h2>
-                    <div class="section-line"></div>
-                    <p>My professional journey and educational qualifications in data analytics.</p>
+            <div class="contact-footer">
+                <p>© 2024 Data Analyst Portfolio. Built with passion for data and design.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disclaimer Section -->
+    <section class="disclaimer">
+        <div class="container">
+            <div class="disclaimer-content">
+                <div class="disclaimer-header">
+                    <i data-lucide="alert-triangle"></i>
+                    <h3>Important Disclaimer</h3>
                 </div>
-                <div class="professional-summary">
-                    <h3>
-                        <i data-lucide="user"></i>
-                        Professional Summary
-                    </h3>
-                    <p>As a seasoned Data Analyst, I have a proven track record of delivering high-impact projects that enhance business performance. My expertise spans data visualization, statistical analysis, and process automation, with a focus on providing actionable insights.</p>
+                <div class="disclaimer-text">
+                    <p><strong>Portfolio Purpose:</strong> This website serves as a professional portfolio showcasing Michael Afolayan's data analytics capabilities and project experience. All project examples and case studies are presented for demonstration purposes.</p>
+                    
+                    <p><strong>Data Privacy:</strong> No actual client data or proprietary information is displayed on this website. All datasets referenced have been anonymized, simulated, or are publicly available for educational purposes.</p>
+                    
+                    <p><strong>Professional Services:</strong> While this portfolio demonstrates technical capabilities, specific project outcomes and methodologies may vary based on client requirements, data quality, and business context. All consulting engagements are subject to formal agreements and confidentiality terms.</p>
+                    
+                    <p><strong>Continuous Learning:</strong> The field of data analytics is constantly evolving. Skills, tools, and methodologies are continuously updated to reflect current industry best practices and emerging technologies.</p>
+                    
+                    <p><strong>Contact Information:</strong> For inquiries about data analytics services, project collaboration, or professional opportunities, please use the contact information provided. Response times may vary based on current project commitments.</p>
+                    
+                    <div class="disclaimer-footer">
+                        <p>Last Updated: <span id="currentDate"></span> | © <span id="currentYear"></span> Michael Afolayan. All rights reserved.</p>
+                    </div>
                 </div>
-                <div class="background-content">
-                    <div class="experience-section">
-                        <h3>
-                            <i data-lucide="briefcase"></i>
-                            Experience
-                        </h3>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content">
-                                    <div class="job-header">
-                                        <h4>Senior Data Analyst</h4>
-                                        <div class="job-period">
-                                            <i data-lucide="calendar"></i>
-                                            2021 - Present
-                                        </div>
-                                    </div>
-                                    <div class="company">[Company Name]</div>
-                                    <p class="job-description">Led data analytics initiatives, developing dashboards and predictive models to support strategic decisions.</p>
-                                    <div class="achievements">
-                                        <p>Key Achievements:</p>
-                                        <ul>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
