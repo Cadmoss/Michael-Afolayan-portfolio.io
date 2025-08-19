@@ -70,14 +70,14 @@ const projects = [
     }
 ];
 
-// Carousel images
+// Carousel images (replaced local paths with placeholder URLs)
 const carouselImages = [
-    "Call Centre Analysis.PNG",
-    "Capture2.PNG",
-    "Capture3.PNG",
-    "Capture4.PNG",
-    "Capture5.PNG",
-    "Captur6.PNG"
+    "https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/164686/pexels-photo-164686.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=800"
 ];
 
 // Initialize the application
@@ -93,17 +93,20 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSmoothScrolling();
 });
 
-// Initialize Lucide icons
+// Utility function to initialize Lucide icons
 function initializeLucideIcons() {
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
+    } else {
+        console.warn('Lucide icons library not loaded');
     }
 }
 
 // Header scroll effect
 function initializeHeader() {
     const header = document.getElementById('header');
-    
+    if (!header) return;
+
     window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
@@ -116,39 +119,28 @@ function initializeHeader() {
 // Carousel functionality
 function initializeCarousel() {
     const carouselImage = document.getElementById('carouselImage');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
     const indicators = document.querySelectorAll('.indicator');
     
-    if (!carouselImage || !prevBtn || !nextBtn) return;
+    if (!carouselImage) {
+        console.warn('Carousel image element not found');
+        return;
+    }
     
     // Update carousel display
     function updateCarousel() {
         carouselImage.src = carouselImages[currentSlide];
+        carouselImage.alt = `Project Dashboard ${currentSlide + 1}`;
         
         indicators.forEach((indicator, index) => {
             indicator.classList.toggle('active', index === currentSlide);
         });
     }
     
-    // Next slide
-    function nextSlide() {
+    // Auto-advance carousel
+    setInterval(() => {
         currentSlide = (currentSlide + 1) % carouselImages.length;
         updateCarousel();
-    }
-    
-    // Previous slide
-    function prevSlide() {
-        currentSlide = currentSlide === 0 ? carouselImages.length - 1 : currentSlide - 1;
-        updateCarousel();
-    }
-    
-    // Event listeners
-    nextBtn.addEventListener('click', nextSlide);
-    prevBtn.addEventListener('click', prevSlide);
-    
-    // Auto-advance carousel
-    setInterval(nextSlide, 5000);
+    }, 5000);
     
     // Initialize
     updateCarousel();
@@ -156,12 +148,15 @@ function initializeCarousel() {
 
 // Go to specific slide
 function goToSlide(index) {
+    if (index < 0 || index >= carouselImages.length) return;
+    
     currentSlide = index;
     const carouselImage = document.getElementById('carouselImage');
     const indicators = document.querySelectorAll('.indicator');
     
     if (carouselImage) {
         carouselImage.src = carouselImages[currentSlide];
+        carouselImage.alt = `Project Dashboard ${currentSlide + 1}`;
     }
     
     indicators.forEach((indicator, i) => {
@@ -176,7 +171,10 @@ function initializeProjects() {
 
 function renderProjects() {
     const projectsGrid = document.getElementById('projectsGrid');
-    if (!projectsGrid) return;
+    if (!projectsGrid) {
+        console.warn('Projects grid element not found');
+        return;
+    }
     
     const filteredProjects = activeFilter === 'All' 
         ? projects 
@@ -198,11 +196,11 @@ function renderProjects() {
                     ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
                 </div>
                 <div class="project-links">
-                    <a href="${project.github}" class="project-link secondary">
+                    <a href="${project.github}" class="project-link secondary" aria-label="View ${project.title} source code on GitHub">
                         <i data-lucide="github"></i>
                         Code
                     </a>
-                    <a href="${project.live}" class="project-link primary">
+                    <a href="${project.live}" class="project-link primary" aria-label="View ${project.title} live demo">
                         <i data-lucide="external-link"></i>
                         View
                     </a>
@@ -211,12 +209,10 @@ function renderProjects() {
         </div>
     `).join('');
     
-    // Reinitialize icons for new content
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
+    initializeLucideIcons();
 }
 
+// Get icon for project category
 function getCategoryIcon(category) {
     const icons = {
         'Excel': 'file-spreadsheet',
@@ -230,25 +226,24 @@ function getCategoryIcon(category) {
     return icons[category] || 'bar-chart-3';
 }
 
+// Set active filter for projects
 function setActiveFilter(button, category) {
-    // Update active filter
     activeFilter = category;
     
-    // Update button states
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
     });
-    button.classList.add('active');
+    if (button) {
+        button.classList.add('active');
+    }
     
-    // Re-render projects
     renderProjects();
 }
 
+// Filter projects by category
 function filterProjects(category) {
-    // Scroll to projects section
     scrollToSection('#projects');
     
-    // Set active filter after a delay to allow scrolling
     setTimeout(() => {
         const filterBtn = document.querySelector(`[data-category="${category}"]`);
         if (filterBtn) {
@@ -322,10 +317,7 @@ function updateDarkModeIcons() {
         mobileDarkModeText.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
     }
     
-    // Reinitialize icons
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
+    initializeLucideIcons();
 }
 
 // Mobile menu functionality
@@ -362,9 +354,7 @@ function openMobileMenu() {
     
     if (mobileMenuIcon) {
         mobileMenuIcon.setAttribute('data-lucide', 'x');
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
+        initializeLucideIcons();
     }
 }
 
@@ -378,9 +368,7 @@ function closeMobileMenu() {
     
     if (mobileMenuIcon) {
         mobileMenuIcon.setAttribute('data-lucide', 'menu');
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
+        initializeLucideIcons();
     }
 }
 
@@ -447,7 +435,7 @@ function updateDisclaimer() {
     const currentYearElement = document.getElementById('currentYear');
     
     if (currentDateElement) {
-        currentDateElement.textContent = new Date().toLocaleDateString();
+        currentDateElement.textContent = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
     }
     
     if (currentYearElement) {
